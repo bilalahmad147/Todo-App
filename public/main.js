@@ -32,6 +32,18 @@ function addTodo() {
     editBtn.setAttribute("class", "btn");
     li.appendChild(editBtn);
 
+    // Connect firebase database
+
+    var key = firebase.database().ref('todoName').push().key;
+    var todoItems = {
+        name: todoItem.value,
+        itemKey : key,
+    }
+    
+    firebase.database().ref('todoName').push(todoItems)
+    console.log(todoItems)
+
+
     todoItem.value = '';
 }
 
@@ -45,7 +57,12 @@ function editItem(e) {
     e.parentNode.firstChild.nodeValue = editValue;
 }
 
+function firebaseDataRemove(){
+    firebase.database().ref('todoName').remove();
+}
+
 
 function delTodo() {
     list.innerHTML = '';
+    firebaseDataRemove();
 }
