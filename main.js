@@ -9,7 +9,7 @@ function addTodo() {
     else {
         var li = document.createElement('li');
         var liText = document.createTextNode(todoItem.value);
-        li.setAttribute("class","todo-list");
+        li.setAttribute("class", "todo-list");
         li.appendChild(liText);
         list.appendChild(li);
     }
@@ -20,7 +20,7 @@ function addTodo() {
     var delText = document.createTextNode("DELETE");
     delBtn.appendChild(delText);
     delBtn.setAttribute("onclick", "delItem(this)");
-    delBtn.setAttribute("class","btn");
+    delBtn.setAttribute("class", "btn");
     li.appendChild(delBtn);
 
     // edit Button
@@ -29,17 +29,17 @@ function addTodo() {
     var editText = document.createTextNode("EDIT");
     editBtn.appendChild(editText);
     editBtn.setAttribute("onclick", "editItem(this)");
-    editBtn.setAttribute("class","btn");
+    editBtn.setAttribute("class", "btn");
     li.appendChild(editBtn);
 
     todoItem.value = '';
 }
 
-function delItem(e){
+function delItem(e) {
     e.parentNode.remove();
 }
 
-function editItem(e){
+function editItem(e) {
     var edit = e.parentNode.firstChild.nodeValue;
     var editValue = prompt("Enter Correct Value", edit)
     e.parentNode.firstChild.nodeValue = editValue;
